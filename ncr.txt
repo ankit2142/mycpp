@@ -1,0 +1,26 @@
+  int nCr(int n, int r){
+        // code here
+          if(n<r)
+         return 0;
+        int i,j,x,y;
+        long long int dp[n+1][r+1];
+        long long int mod=1000000007;
+        memset(dp,0,sizeof(dp));
+        for(i=0;i<=n;i++)
+        {
+            for(j=0;j<=min(i,r);j++)
+            {
+                if(j==0||(i==j))
+                 dp[i][j]=1;
+                else
+                 {
+                     x=(dp[i-1][j-1])%mod;
+                     y=(dp[i-1][j])%mod;
+                     dp[i][j]=(x+y)%mod;
+                      
+                 }
+            }
+        }
+      
+        return dp[n][r];
+    }
